@@ -1,5 +1,6 @@
 var express = require('express');
-
+//getting fetch handler
+var fetchJSON = require('./controllers/handler.js');
 //using express
 var app = express();
 //using express to deploy static files
@@ -14,3 +15,9 @@ app.get('/', function(req, res){
     console.log('host setup');
     res.render('index');
 });
+
+//fetch = get json button
+var fetch = document.getElementById(1);
+fetch.addEventListener('click', fetchHandler);
+//passing flow to controller
+fetchJSON();
