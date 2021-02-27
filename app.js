@@ -22,7 +22,9 @@ mongoose.set('useUnifiedTopology', true);
 //#The mongoose.connect asynchronouly returns a promise.
 //#Since the mongoose.connect is an asynchronous request, it will run in the background after app listens to :3000 if we keep the command seperate.
 //#Thus instead include it in the .then of the promise as then, the app loads only after connecting to the db.
+
 const dbURI = DBURI;
+
 try{
     mongoose.connect(dbURI, () =>
     app.listen(3000));
