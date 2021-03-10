@@ -1,0 +1,19 @@
+<section class="article-clean">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10 col-xl-8 offset-lg-1 offset-xl-2">
+                <div class="intro">
+                    <h1 class="text-center"><%= blog.title %></h1>
+                    <p class="text-center">At : <span class="date"><%= blog.updatedAt %></span></p>
+                </div>
+                <div class="text">
+                    <p><%= blog.content %>.</p>
+                    <figure class="figure d-block"></figure>
+                    <a class="delete" data-doc="<%= blog._id %>"><button class="btn btn-danger btn-lg text-capitalize text-center border-primary" style="padding-left: 20px;padding-right: 20px; margin-left: 30px;">Delete the post</button></a>
+            </div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/delete-handler.js"></script>
+    </section>
+</html>
