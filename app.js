@@ -30,7 +30,7 @@ mongoose.set('useUnifiedTopology', true);
 //#The mongoose.connect asynchronouly returns a promise.
 //#Since the mongoose.connect is an asynchronous request, it will run in the background after app listens to :3000 if we keep the command seperate.
 //#Thus instead include it in the .then of the promise as then, the app loads only after connecting to the db.
-mongoose.connect("mongodb://mohitdmak:F4tNq8qZnSL4FXTv@firstcluster-shard-00-00.uft2s.mongodb.net:27017,firstcluster-shard-00-01.uft2s.mongodb.net:27017,firstcluster-shard-00-02.uft2s.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-x8aor0-shard-0&authSource=admin&retryWrites=true&w=majority", { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
+mongoose.connect(DBURI, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
     .then((result) => {
         console.log('Database Connected');
         app.listen(3000);
