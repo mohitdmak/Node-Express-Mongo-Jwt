@@ -44,25 +44,16 @@ mongoose.connect("mongodb://mohitdmak:F4tNq8qZnSL4FXTv@firstcluster-shard-00-00.
 //app.listen(3000);
 //! >>>
 
+// SECTION - using the blog router :
+const Blogroutes = require('./routes/blogroutes');
+app.use('/blog', Blogroutes);
+// |SECTION
+
+
 //home page get request
 app.get('/', function(req, res){
     console.log('\nhost has arrived at home page\n');
     res.render('home');
-});
-
-// SECTION - Handling post request for creating blogs,
-//           and get request for obtaining all blogs,
-//           and getting/deleting a particular blog.
-//#region 
-app.post("/blog", (req, res) =>{
-    const blog = new Blog(req.body);
-    blog.save()
-        .then((result) => {
-            console.log('new blog is created');
-            res.redirect('/');
-        }).catch((err) => {
-            console.error(err);
-        });
 });
 
 // NOTE-THAT : Below is the normal get request which acquires data from db server and reloads page to render.
@@ -89,29 +80,4 @@ app.get('/allblogs', function(req, res){
             console.error(err);
         });
 });
-//#endregion
-
-app.get('/blog/:id', function(req, res){
-    const id = req.params.id;
-    Blog.findById(id)
-        .then((result) => {
-            console.log(`blog data with id ${id} is fetched.`);
-            res.render('blog', {blog : result})
-        }).catch((err) => {
-            console.error(err);
-        });
-});
-
-app.delete('/blog/:id', (req, res) => {
-    const id = req.params.id;
-    Blog.findByIdAndDelete(id)
-        .then((result) => {
-            console.log(`blog data with id ${id} is deleted by using jquery`);
-            res.json({redirect: '/all'});
-        })
-        .catch((err) => {
-            console.error(err);
-        });
-})
-// |SECTION
 //#endregion
