@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -8,8 +11,8 @@
 </head>
 
 <body>
-    <a href = '/'><h2 class="display-3 text-center border-success shadow-lg" data-bss-hover-animate="pulse">LEARNING XHR REQUESTS
-        HANDLING USING AJAX</h2><br><br><br><br></a>
+    <h2 class="display-3 text-center border-success shadow-lg" data-bss-hover-animate="pulse">LEARNING XHR REQUESTS
+        HANDLING USING AJAX</h2><br><br><br><br>
     <hr>
     <div class="container">
         <div class="row">
@@ -21,16 +24,21 @@
                     <hr /><button id = '1' class="btn btn-success btn-lg text-capitalize text-center border-primary" type="submit" style="  padding-left: 20px;
           padding-right: 20px; margin-left: 30px;
         ">Get JSON data (xml)</button>
-                    <button id = '2' class="btn btn-success btn-lg text-capitalize text-center border-primary" style="  padding-left: 20px;
+                    <button id = '2' class="btn btn-success btn-lg text-capitalize text-center border-primary" type="submit" style="  padding-left: 20px;
           padding-right: 20px;margin-left: 30px;
         ">Get Mongodb data</button>
                 </div>
-                <ul class="text-capitalize text-center text-dark bg-light" id = 'list'>
-                    <% if( typeof(blogs) !== "undefined" && blogs.length > 0){ %>
-                        <% blogs.forEach(blog => {%>
-                            <li id = 'g1'><a href = '/blog/<%= blog._id %>'><%= blog.title %> |||</a></li> 
+                <ul class="text-capitalize text-center text-dark bg-light"><!--
+                    <% if( typeof(topics) !== "undefined" && topics.length > 0){ %>
+                        <% topics.forEach(topic => {%>
+                            <li id = 'g1'><%= topic.title %> ||| <%= topic.content %></li> 
                         <% }) %>
-                    <% } %>
+                    <% }else{ %>
+                        <li id = 'g1'>Item 1</li>
+                        <li id = 'g2'>Item 2</li>
+                        <li id = 'g3'>Item 3</li>
+                        <li id = 'g4'>Item 4</li>
+                    <% } %>-->
                 </ul>
             </div>
             <div class="col-md-6">
@@ -41,15 +49,13 @@
                     <hr />
                 </div>
                 <ul class="text-capitalize text-center text-dark bg-light">
-                    <form action = "/blog" method = "POST" id="form">
+                    <form action = "/create-blog" method = "POST">
                     <li><label for="Title">Title of your blog :</label>
                     <input type="text" id="Title" name="title" required></li>
                     <li><label for="Body">Content of your blog :</label>
                     <input type="text" id="Body" name="content" required></li>
                     <button class="btn btn-success btn-lg text-capitalize text-center border-primary" type="submit" style="padding-left: 10px;padding-right: 10px;margin-left: 30px;">Submit data</button>
                     </form>
-                    <button id = 'xp' class="btn btn-success btn-lg text-capitalize text-center border-primary" type="submit" style="padding-left: 10px;padding-right: 10px;margin-left: 30px;">Submit via XML</button>
-                    
                 </ul>
             </div>
         </div>
@@ -63,3 +69,5 @@
     <script src="assets/js/vanilla-app.js"></script>
     <script src="assets/js/mongo-get.js"></script>
 </body>
+
+</html>

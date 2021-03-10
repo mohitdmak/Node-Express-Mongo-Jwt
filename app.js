@@ -1,70 +1,83 @@
+// SECTION - modules stuff for express and templating engine
+//#region 
+//using express; using express to deploy static files; using express's body-parser
+const { render } = require('ejs');
 const express = require('express');
-//using express
 const app = express();
-//using mongodb via mlabs host
-const mongoose = require('mongoose');
-//using cluster topics vis model Topic
-const Topic = require('./models/Topic.js');
-//using express to deploy static files
 app.use('/assets',express.static('assets'));
-const DBURI = require('./mongoatlas');
-
+app.use('/blog/assets',express.static('assets'));
+app.use(express.urlencoded({ extended:true }));
 //using ejs as view engine
 app.set('view engine','ejs');
+// |SECTION
+//#endregion
 
+// SECTION - modules stuff for mongoDB.
+//#region 
+//using mongodb via atlas host; using cluster topics via model Topic; importing mongdoDB auth securely 
+const mongoose = require('mongoose');
+const Blog = require('./models/Blog.js');
+const DBURI = require('./mongoatlas');
 //mongoose settings for depraciation errors
 mongoose.set('useNewUrlParser', true);
 mongoose.set('useFindAndModify', false);
 mongoose.set('useCreateIndex', true);
 mongoose.set('useUnifiedTopology', true);
+//|SECTION
+//#endregion
 
-
+// NOTE-THAT -
 //#The mongoose.connect asynchronouly returns a promise.
 //#Since the mongoose.connect is an asynchronous request, it will run in the background after app listens to :3000 if we keep the command seperate.
 //#Thus instead include it in the .then of the promise as then, the app loads only after connecting to the db.
+mongoose.connect(DBURI, { useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true })
+    .then((result) => {
+        console.log('Database Connected');
+        app.listen(3000);
+    }).catch(err => console.log(err));
 
-const dbURI = DBURI;
+//FIX-THIS - //!just understand the thing about usage and scope of 'this' keyword in ES5 fxns and arrow ES6 fxns, also see chained promises multiple .then.
 
-try{
-    mongoose.connect(dbURI, () =>
-    app.listen(3000));
-    console.log('Db connected, app listening on port 3000')
-}catch(err){
-    console.error(err);
-}
-
+// LINK ./app.js:30
 //!Refer above #comment <<<
 //listening to port 3000
-//*app.listen(3000);
+//app.listen(3000);
 //! >>>
+
+// SECTION - using the blog router :
+const Blogroutes = require('./routes/blogroutes');
+app.use('/blog', Blogroutes);
+// |SECTION
+
 
 //home page get request
 app.get('/', function(req, res){
-    console.log('host setup');
-    res.render('index');
+    console.log('\nhost has arrived at home page\n');
+    res.render('home');
 });
 
-//mongo-db sandbox routes
-app.get('/add', function(req, res){
-    var topic = new Topic({
-        title: 'hey here is the second post to the db',
-        content: 'I have the exact same issue. '
-    });
-    topic.save()
-        .then((result) => {
-            res.send(result);
-            console.log(result);
-        }).catch((err) => {
-            console.error(err);
-        });
-});
+// NOTE-THAT : Below is the normal get request which acquires data from db server and reloads page to render.
+//             Further below is an immplementation of same task using XML requestAnimationFrame, without JQuery,whose client js file is linked below:
+// LINK ./assets/js/mongo-get.js
+//#region 
 
 app.get('/all', function(req, res){
-    Topic.find()
+    Blog.find()
         .then((result) => {
-            console.log(result);
-            res.render('index', {topics : result})
+            console.log('blog data is fetched from mongo using jquery');
+            res.render('home', {blogs : result});
+        }).catch((err) => {
+            console.error(err);
+        });
+}); 
+
+app.get('/allblogs', function(req, res){
+    Blog.find()
+        .then((result) => {
+            console.log('blog data is fetched from mongo atlas');
+            res.send(result);
         }).catch((err) => {
             console.error(err);
         });
 });
+//#endregion
