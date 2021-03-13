@@ -1,6 +1,6 @@
 //using mongodb via atlas host; using cluster topics via model Topic; importing mongdoDB auth securely 
 const mongoose = require('mongoose');
-const DBURI = require('./mongoatlastest');
+const DBURI = require('../mongoatlas');
 
 //NOTE-THAT :  Before running our main tests we need to connect to db, through below fucntion
 //# before() executes before whole test suite in mocha, similarly beforeEach executes before each test
