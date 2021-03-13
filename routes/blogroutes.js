@@ -11,7 +11,7 @@ blogrouter.post("", blogcontrollers.postblog);
 blogrouter.get('/:id', blogcontrollers.getablog);
 
 blogrouter.delete('/:id', blogcontrollers.deleteblog);
-// |SECTION
+//|SECTION
 //#endregion
 
 module.exports = blogrouter;

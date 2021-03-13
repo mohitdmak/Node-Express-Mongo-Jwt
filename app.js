@@ -6,7 +6,10 @@ const express = require('express');
 const app = express();
 app.use('/assets',express.static('assets'));
 app.use('/blog/assets',express.static('assets'));
+//#this parses data submitted through forms generally.
 app.use(express.urlencoded({ extended:true }));
+//#this parses data submitted in json format.
+app.use(express.json());
 //using ejs as view engine
 app.set('view engine','ejs');
 // |SECTION
@@ -38,6 +41,9 @@ mongoose.connect(DBURI, { useNewUrlParser: true, useCreateIndex: true, useUnifie
 
     
 //FIX-THIS - //!just understand the thing about usage and scope of 'this' keyword in ES5 fxns and arrow ES6 fxns, also see chained promises multiple .then.
+// LINK ./models/User.js:25 
+//! above fix this is also seen in above link.
+
 
 //FIX-THIS - //!also figure how to send delete/put req using html forms, as they officially only support get/post methods.
 
@@ -54,6 +60,12 @@ mongoose.connect(DBURI, { useNewUrlParser: true, useCreateIndex: true, useUnifie
 // SECTION - using the blog router :
 const Blogroutes = require('./routes/blogroutes');
 app.use('/blog', Blogroutes);
+// |SECTION
+
+
+// SECTION - using the user router :
+const Userroutes = require('./routes/Userroutes');
+app.use('/user', Userroutes);
 // |SECTION
 
 

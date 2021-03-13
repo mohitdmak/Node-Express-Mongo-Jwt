@@ -17,9 +17,11 @@
   },
   "homepage": "https://github.com/mohitdmak/xhr-ajax#readme",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "mocha": "^8.3.2",
-    "mongoose": "^5.11.18"
+    "mongoose": "^5.11.18",
+    "validator": "^13.5.2"
   }
 }
