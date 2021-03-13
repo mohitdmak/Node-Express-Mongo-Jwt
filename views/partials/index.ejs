@@ -1,0 +1,65 @@
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>xjr-ajax</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body>
+    <a href = '/'><h2 class="display-3 text-center border-success shadow-lg" data-bss-hover-animate="pulse">LEARNING XHR REQUESTS
+        HANDLING USING AJAX</h2><br><br><br><br></a>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h1
+                    class="display-2 text-capitalize text-center text-success bg-light border rounded-0 border-secondary shadow">
+                    Using get request</h1>
+                <div>
+                    <hr /><button id = '1' class="btn btn-success btn-lg text-capitalize text-center border-primary" type="submit" style="  padding-left: 20px;
+          padding-right: 20px; margin-left: 30px;
+        ">Get JSON data (xml)</button>
+                    <button id = '2' class="btn btn-success btn-lg text-capitalize text-center border-primary" style="  padding-left: 20px;
+          padding-right: 20px;margin-left: 30px;
+        ">Get Mongodb data</button>
+                </div>
+                <ul class="text-capitalize text-center text-dark bg-light" id = 'list'>
+                    <% if( typeof(blogs) !== "undefined" && blogs.length > 0){ %>
+                        <% blogs.forEach(blog => {%>
+                            <li id = 'g1'><a href = '/blog/<%= blog._id %>'><%= blog.title %> |||</a></li> 
+                        <% }) %>
+                    <% } %>
+                </ul>
+            </div>
+            <div class="col-md-6">
+                <h1
+                    class="display-2 text-capitalize text-center text-success bg-light border rounded-0 border-secondary shadow">
+                    Using Post request</h1>
+                <div>
+                    <hr />
+                </div>
+                <ul class="text-capitalize text-center text-dark bg-light">
+                    <form action = "/blog" method = "POST" id="form">
+                    <li><label for="Title">Title of your blog :</label>
+                    <input type="text" id="Title" name="title" required></li>
+                    <li><label for="Body">Content of your blog :</label>
+                        <textarea id="Body" name="content" form="form" required></textarea></li>
+                    <button class="btn btn-success btn-lg text-capitalize text-center border-primary" type="submit" style="padding-left: 10px;padding-right: 10px;margin-left: 30px;">Submit data</button>
+                    </form>
+                    <button id = 'xp' class="btn btn-success btn-lg text-capitalize text-center border-primary" type="submit" style="padding-left: 10px;padding-right: 10px;margin-left: 30px;">Submit via XML</button>
+                    
+                </ul>
+            </div>
+        </div>
+    </div><br><br><br>
+    <hr>
+    <div class="container text-center bg-white border rounded-0 border-success shadow-lg">contact: <a
+            href="https://github.com/mohitdmak">mohitdmak</a></div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/vanilla-app.js"></script>
+    <script src="assets/js/mongo-get.js"></script>
+</body>
