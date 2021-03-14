@@ -19,7 +19,7 @@ function handleError(err){
     if(err.code === 11000){
         errors.email = 'An account with this email id already exists.';
     }
-    
+
     return errors;
 }
 
@@ -60,9 +60,13 @@ const post_signup = (req, res) => {
 };
 */
 
-const get_login = () => {};
+const get_login = (req, res) => {
+    res.render('login');
+};
 
-const get_signup = () => {};
+const get_signup = (req, res) => {
+    res.render('signup');
+};
 
 const post_login = () => {};
 

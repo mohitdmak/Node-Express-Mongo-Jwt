@@ -28,7 +28,7 @@ const Userschema = new schema({
               //* We have 4 types of middleware for mongo, reference here : https://mongoosejs.com/docs/middleware
               //* Here we are adding event every time, a 'save' function is performed on User model.
               //* Also for all middlewares we need to have 'next()' to move onto next middleware.
-
+//# Can call these mongoose hooks
 
 Userschema.pre('save', async function(next){
     //REVIEW-THIS: //! Again lookup the thing  about use of 'this' in ES5 JS fxns and ES6 JS fxns.

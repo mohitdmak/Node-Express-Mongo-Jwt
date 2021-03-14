@@ -6,12 +6,22 @@ const express = require('express');
 const app = express();
 app.use('/assets',express.static('assets'));
 app.use('/blog/assets',express.static('assets'));
+app.use('/user/assets', express.static('assets'));
+
+//* MIDDLEWARE :
 //#this parses data submitted through forms generally.
 app.use(express.urlencoded({ extended:true }));
 //#this parses data submitted in json format.
 app.use(express.json());
+//#needed to parse cookie data wherever processed :
+app.use(cookieParser());
+
 //using ejs as view engine
 app.set('view engine','ejs');
+
+//setting up cookie parser.
+const cookieParser = require('cookie-parser');
+
 // |SECTION
 //#endregion
 
@@ -100,3 +110,20 @@ app.get('/allblogs', function(req, res){
         });
 });
 //#endregion
+
+//* Setting cookies fundamentally :
+app.get('/set-cookies', (req, res) => {
+    //* 1st parameter is header, 2nd is cookie name = value
+    res.setHeader('Set-Cookie', 'newUser = true');
+    //* We can also set parameter options of max-Age, Secure?, Httponly?, etc (research)
+    res.send('Hey I have set a cookie on your browser');
+    
+});
+
+//* Setting Cookies with parser :
+app.get('/Set-Cookies', (req, res) => {
+    res.cookie('newUser', false);
+    //* We can also set parameter options of max-Age, Secure?, Httponly?, etc (research)
+    //! Note: for production, always set secure:true, i.e send cookies only through a secure Https connection.
+    res.send('Hey I have set a cookie on your browser');
+})
