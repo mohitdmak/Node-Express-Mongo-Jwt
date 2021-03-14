@@ -1,3 +1,6 @@
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -11,6 +14,7 @@
     <a href = '/'><h2 class="display-3 text-center border-success shadow-lg" data-bss-hover-animate="pulse">LEARNING XHR REQUESTS
         HANDLING USING AJAX</h2><br><br><br><br></a>
     <hr>
+    
     <nav class="navbar navbar-light navbar-expand-md navigation-clean">
         <div class="container"><a class="navbar-brand" href="/">Home Page</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
@@ -25,6 +29,16 @@
     </nav>
     <hr>
     <br>
+    <section class="login-clean">
+        <form method="post" action="/user/signup">
+            <h2 style="margin-left:10cm"><u>Signup Form</u></h2>
+            <hr>
+            <div class="illustration"><i class="icon ion-ios-navigate"></i></div>
+            <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email" /></div>
+            <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password" /></div>
+            <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Sign UP</button></div>
+        </form>
+    </section>
     <div class="container">
         <div class="row">
             <div class="col-md-6">
@@ -59,7 +73,7 @@
                     <li><label for="Title">Title of your blog :</label>
                     <input type="text" id="Title" name="title" required></li>
                     <li><label for="Body">Content of your blog :</label>
-                        <textarea id="Body" name="content" form="form" required></textarea></li>
+                    <textarea id="Body" name="content" form="form" required></textarea></li>
                     <button class="btn btn-success btn-lg text-capitalize text-center border-primary" type="submit" style="padding-left: 10px;padding-right: 10px;margin-left: 30px;">Submit data</button>
                     </form>
                     <button id = 'xp' class="btn btn-success btn-lg text-capitalize text-center border-primary" type="submit" style="padding-left: 10px;padding-right: 10px;margin-left: 30px;">Submit via XML</button>
@@ -77,3 +91,5 @@
     <script src="assets/js/vanilla-app.js"></script>
     <script src="assets/js/mongo-get.js"></script>
 </body>
+
+</html>

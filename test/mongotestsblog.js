@@ -29,7 +29,7 @@ describe('Database Actions Tests', function(){
         });
 
     it('Finds test blog from the database', function(done){
-        Blog.findOne({title: 'Test Blog'})
+        var found = Blog.findOne({title: 'Test Blog'})
             .then((result) => {
                 if(result.title === 'Test Blog'){
                     done();

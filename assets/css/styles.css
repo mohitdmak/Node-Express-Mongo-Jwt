@@ -1,0 +1,48 @@
+.login-clean form .form-control {
+    background: #f7f9fc;
+    border: none;
+    margin-left: 10cm;
+    width: 10cm;
+    border-bottom: 1px solid #dfe7f1;
+    border-radius: 0;
+    box-shadow: none;
+    outline: none;
+    color: inherit;
+    text-indent: 8px;
+    height: 42px;
+  }
+  
+  .login-clean form .btn-primary {
+    background: #f4476b;
+    border: none;
+    margin-left: 10cm;
+    border-radius: 4px;
+    width: 8cm;
+    padding: 11px;
+    box-shadow: none;
+    margin-top: 26px;
+    text-shadow: none;
+    outline: none !important;
+  }
+  
+  .login-clean form .btn-primary:hover, .login-clean form .btn-primary:active {
+    background: #eb3b60;
+  }
+  
+  .login-clean form .btn-primary:active {
+    transform: translateY(1px);
+  }
+  
+  .login-clean form .forgot {
+    display: block;
+    text-align: center;
+    font-size: 12px;
+    color: #6f7a85;
+    opacity: 0.9;
+    text-decoration: none;
+  }
+  
+  .login-clean form .forgot:hover, .login-clean form .forgot:active {
+    opacity: 1;
+    text-decoration: none;
+  }
