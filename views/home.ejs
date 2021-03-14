@@ -11,16 +11,24 @@
 </head>
 
 <body>
-    <a href = '/'><h2 class="display-3 text-center border-success shadow-lg" data-bss-hover-animate="pulse">LEARNING XHR REQUESTS
-        HANDLING USING AJAX</h2><br><br><br><br></a>
+    <a href = '/'><h2 class="display-3 text-center border-success shadow-lg" data-bss-hover-animate="pulse">Node and Xml Project</h2><br><br><br><br></a>
     <hr>
     
     <nav class="navbar navbar-light navbar-expand-md navigation-clean">
-        <div class="container"><a class="navbar-brand" href="/">Home Page</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand" href="/">Home Page - </a>
+            <% if(user !== null){ %>
+                <h3><u><i><%= user.email %></i></u></h3>
+            <% } %>
+            <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item"><a class="nav-link active" href="/user/login">Log in</a></li>
-                    <li class="nav-item"><a class="nav-link" href="/user/signup">Sign up</a></li>
+                    <% if(user !== null){ %>
+                        <li class="nav-item"><a class="nav-link active" href="#">Log in</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Sign up</a></li>
+                    <% }else{ %>
+                        <li class="nav-item"><a class="nav-link active" href="/user/login">Log in</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/user/signup">Sign up</a></li>
+                    <% } %>
                     <li class="nav-item"><a class="nav-link" href="/user/logout">Log out</a></li>
                     </li>
                 </ul>
@@ -37,11 +45,11 @@
                     Using get request</h1>
                 <div>
                     <hr /><a href="/blog/all"><button id = '1' class="btn btn-success btn-lg text-capitalize text-center border-primary" type="submit" style="  padding-left: 20px;
-          padding-right: 20px; margin-left: 30px;
-        ">Get Data</button></a>
-                    <button id = '2' class="btn btn-success btn-lg text-capitalize text-center border-primary" style="  padding-left: 20px;
-          padding-right: 20px;margin-left: 30px;
-        ">Get Mongodb data</button>
+                        padding-right: 15px; margin-left: 30px;
+                      ">Get Mongodb Data</button></a>
+                                  <button id = '2' class="btn btn-success btn-lg text-capitalize text-center border-primary" style="  padding-left: 20px;
+                        padding-right: 15px;margin-left: 30px;
+                      ">Get Mongodb data (XML)</button>
                 </div>
                 <ul class="text-capitalize text-center text-dark bg-light" id = 'list'>
                     <% if( typeof(blogs) !== "undefined" && blogs.length > 0){ %>

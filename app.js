@@ -12,12 +12,14 @@ app.use('/user/assets', express.static('assets'));
 const cookieParser = require('cookie-parser');
 
 //* MIDDLEWARE :
-//#this parses data submitted through forms generally.
+//# this parses data submitted through forms generally.
 app.use(express.urlencoded({ extended:true }));
-//#this parses data submitted in json format.
+//# this parses data submitted in json format.
 app.use(express.json());
-//#needed to parse cookie data wherever processed :
+//# needed to parse cookie data wherever processed.
 app.use(cookieParser());
+//# Using custom middleware for Checking and making available the Logged User for all get requests, and thus for all views.
+const { checkLoggedUser }= require('./Middleware/loggedUser');
 
 //using ejs as view engine
 app.set('view engine','ejs');
@@ -66,6 +68,9 @@ mongoose.connect(DBURI, { useNewUrlParser: true, useCreateIndex: true, useUnifie
 //listening to port 3000
 //app.listen(3000);
 //! >>>
+
+//LINK ./app.js:14
+app.get('*', checkLoggedUser);
 
 // SECTION - using the blog router :
 const Blogroutes = require('./routes/blogroutes');

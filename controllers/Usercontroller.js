@@ -175,11 +175,19 @@ const post_login = (req, res) => {
 //|SECTION 
 //#endregion
 
+
 const get_login = (req, res) => {
     res.render('login');
 };
 
-const get_logout = () => {};
+
+//NOTE-THAT : //* We cannot delete cookies set on the browser from the server itself, but we can update them.
+              //* Thus we will set the value as an empty string instead of the token, and that too with maxAge as 1 millisecond ( the least ), effectively deleting it.
+
+const get_logout = (req, res) => {
+    res.cookie('jwtAUTH', '', { maxAge:  1 });
+    res.redirect('/');
+};
 
 module.exports = {
     get_signup,
