@@ -32,12 +32,12 @@
                     class="display-2 text-capitalize text-center text-success bg-light border rounded-0 border-secondary shadow">
                     Using get request</h1>
                 <div>
-                    <hr /><button id = '1' class="btn btn-success btn-lg text-capitalize text-center border-primary" type="submit" style="  padding-left: 20px;
-          padding-right: 20px; margin-left: 30px;
-        ">Get JSON data (xml)</button>
-                    <button id = '2' class="btn btn-success btn-lg text-capitalize text-center border-primary" style="  padding-left: 20px;
-          padding-right: 20px;margin-left: 30px;
-        ">Get Mongodb data</button>
+                    <hr /><a href="/blog/all"><button id = '1' class="btn btn-success btn-lg text-capitalize text-center border-primary" type="submit" style="  padding-left: 20px;
+                        padding-right: 20px; margin-left: 30px;
+                      ">Get Data</button></a>
+                                  <button id = '2' class="btn btn-success btn-lg text-capitalize text-center border-primary" style="  padding-left: 20px;
+                        padding-right: 20px;margin-left: 30px;
+                      ">Get Mongodb data</button>
                 </div>
                 <ul class="text-capitalize text-center text-dark bg-light" id = 'list'>
                     <% if( typeof(blogs) !== "undefined" && blogs.length > 0){ %>

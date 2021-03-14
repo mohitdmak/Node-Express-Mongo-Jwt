@@ -1,4 +1,4 @@
-// SECTION - modules stuff for express and templating engine
+// SECTION - //# modules stuff for express and templating engine and Middleware.
 //#region 
 //using express; using express to deploy static files; using express's body-parser
 const { render } = require('ejs');
@@ -7,6 +7,9 @@ const app = express();
 app.use('/assets',express.static('assets'));
 app.use('/blog/assets',express.static('assets'));
 app.use('/user/assets', express.static('assets'));
+
+//setting up cookie parser.
+const cookieParser = require('cookie-parser');
 
 //* MIDDLEWARE :
 //#this parses data submitted through forms generally.
@@ -19,13 +22,10 @@ app.use(cookieParser());
 //using ejs as view engine
 app.set('view engine','ejs');
 
-//setting up cookie parser.
-const cookieParser = require('cookie-parser');
-
 // |SECTION
 //#endregion
 
-// SECTION - modules stuff for mongoDB.
+// SECTION - //# modules stuff for mongoDB.
 //#region 
 //using mongodb via atlas host; using cluster topics via model Topic; importing mongdoDB auth securely 
 const mongoose = require('mongoose');
@@ -61,7 +61,7 @@ mongoose.connect(DBURI, { useNewUrlParser: true, useCreateIndex: true, useUnifie
 // LINK ./assets/js/xml-post.js
 
 
-// LINK ./app.js:30
+// LINK ./app.js:40
 //!Refer above #comment <<<
 //listening to port 3000
 //app.listen(3000);
@@ -85,32 +85,9 @@ app.get('/', function(req, res){
     res.render('home');
 });
 
-// NOTE-THAT : Below is the normal get request which acquires data from db server and reloads page to render.
-//             Further below is an immplementation of same task using XML requestAnimationFrame, without JQuery,whose client js file is linked below:
-// LINK ./assets/js/mongo-get.js
+
+// SECTION : //# Basic Cookie stuff :
 //#region 
-
-app.get('/all', function(req, res){
-    Blog.find()
-        .then((result) => {
-            console.log('blog data is fetched from mongo using jquery');
-            res.render('home', {blogs : result});
-        }).catch((err) => {
-            console.error(err);
-        });
-}); 
-
-app.get('/allblogs', function(req, res){
-    Blog.find()
-        .then((result) => {
-            console.log('blog data is fetched from mongo atlas');
-            res.send(result);
-        }).catch((err) => {
-            console.error(err);
-        });
-});
-//#endregion
-
 //* Setting cookies fundamentally :
 app.get('/set-cookies', (req, res) => {
     //* 1st parameter is header, 2nd is cookie name = value
@@ -127,3 +104,5 @@ app.get('/Set-Cookies', (req, res) => {
     //! Note: for production, always set secure:true, i.e send cookies only through a secure Https connection.
     res.send('Hey I have set a cookie on your browser');
 })
+//|SECTION
+//#endregion
