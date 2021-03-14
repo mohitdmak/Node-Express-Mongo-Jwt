@@ -16,7 +16,11 @@
     <hr>
     
     <nav class="navbar navbar-light navbar-expand-md navigation-clean">
-        <div class="container"><a class="navbar-brand" href="/">Home Page</a><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+        <div class="container"><a class="navbar-brand" href="/">Home Page</a>
+            <% if(user !== null){ %>
+                <h3><u><i><%= user.email %></i></u></h3>
+            <% } %>
+            <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a class="nav-link active" href="/user/login">Log in</a></li>
@@ -34,6 +38,11 @@
             <h2 style="margin-left:10cm"><u>Signup Form</u></h2>
             <hr>
             <div class="illustration"><i class="icon ion-ios-navigate"></i></div>
+            <p class = "error">
+                <% if(typeof(err) !== "undefined"){ %>
+                    <%= err %>
+                <% } %>
+            </p>
             <div class="form-group"><input class="form-control" type="email" name="email" placeholder="Email" /></div>
             <div class="form-group"><input class="form-control" type="password" name="password" placeholder="Password" /></div>
             <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Sign UP</button></div>
@@ -46,12 +55,12 @@
                     class="display-2 text-capitalize text-center text-success bg-light border rounded-0 border-secondary shadow">
                     Using get request</h1>
                 <div>
-                    <hr /><button id = '1' class="btn btn-success btn-lg text-capitalize text-center border-primary" type="submit" style="  padding-left: 20px;
-          padding-right: 20px; margin-left: 30px;
-        ">Get JSON data (xml)</button>
-                    <button id = '2' class="btn btn-success btn-lg text-capitalize text-center border-primary" style="  padding-left: 20px;
-          padding-right: 20px;margin-left: 30px;
-        ">Get Mongodb data</button>
+                    <hr /><a href="/blog/all"><button id = '1' class="btn btn-success btn-lg text-capitalize text-center border-primary" type="submit" style="  padding-left: 20px;
+                        padding-right: 15px; margin-left: 30px;
+                      ">Get Mongodb Data</button></a>
+                                  <button id = '2' class="btn btn-success btn-lg text-capitalize text-center border-primary" style="  padding-left: 20px;
+                        padding-right: 15px;margin-left: 30px;
+                      ">Get Mongodb data (XML)</button>
                 </div>
                 <ul class="text-capitalize text-center text-dark bg-light" id = 'list'>
                     <% if( typeof(blogs) !== "undefined" && blogs.length > 0){ %>

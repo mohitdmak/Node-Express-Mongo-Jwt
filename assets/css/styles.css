@@ -1,3 +1,11 @@
+.error {
+  margin-left: 10cm;
+  text-emphasis-color: Red;
+  text-decoration-thickness: 5px;
+  text-decoration-style: solid;
+  -moz-text-decoration-color: #eb3b60;
+}
+
 .login-clean form .form-control {
     background: #f7f9fc;
     border: none;
