@@ -72,6 +72,7 @@ mongoose.connect(DBURI, { useNewUrlParser: true, useCreateIndex: true, useUnifie
 //LINK ./app.js:14
 app.get('*', checkLoggedUser);
 
+
 // SECTION - using the blog router :
 const Blogroutes = require('./routes/blogroutes');
 app.use('/blog', Blogroutes);

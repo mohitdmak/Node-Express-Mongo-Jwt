@@ -1,4 +1,4 @@
 mongoatlas.js
-node_modules
+node_modules/
 test/mongoatlastest.js
 JWTsecret.js
